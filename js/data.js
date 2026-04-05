@@ -76,7 +76,7 @@ const DATA = {
       description: "Mines stone at a Quarry. +3 Stone/tick" },
     { id: 5, name: "Miner",        workplace_struct_id: 5,    unlocked_by_struct: 5,
       food_per_tick: 4, produces: { resource_id: 4, qty: 2 },
-      description: "Mines stone at a Quarry. +2 Ore/tick" },
+      description: "Mines ore at a Mine. +2 Ore/tick" },
     { id: 6, name: "Smith",        workplace_struct_id: 7,    unlocked_by_struct: 7,
       food_per_tick: 3, produces: { resource_id: 5, qty: 1 },
       description: "Forges swords at the Armory. +1 Shoddy Sword/tick" },
