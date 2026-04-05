@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingdom's Tower</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- FACTION SELECT SCREEN -->
+<div id="faction-select-screen" class="screen active">
+  <div class="select-bg"></div>
+  <div class="select-content">
+    <h1 class="game-title">Kingdom's Tower</h1>
+    <p class="game-subtitle">An Incremental Tower Climber</p>
+    <div class="setup-form">
+      <label>Kingdom Name</label>
+      <input type="text" id="kingdom-name-input" placeholder="Name your kingdom..." maxlength="24">
+      <label>Choose Your Faction</label>
+      <div class="faction-grid" id="faction-grid"></div>
+      <button class="btn-start" id="start-btn">Begin Your Reign</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN GAME -->
+<div id="game-screen" class="screen">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="kingdom-title" id="kingdom-title">— Kingdom —</div>
+    <div class="time-display">
+      <span id="time-season">Spring</span>
+      <span class="time-sep">·</span>
+      <span>Day <span id="time-day">1</span></span>
+      <span class="time-sep">·</span>
+      <span>Year <span id="time-year">1</span></span>
+    </div>
+    <div class="resource-bar" id="resource-bar"></div>
+  </div>
+
+  <!-- TABS -->
+  <nav class="tab-nav" id="tab-nav"></nav>
+
+  <!-- TAB PANELS -->
+  <main class="tab-content" id="tab-content">
+
+    <!-- OVERVIEW -->
+    <section class="tab-panel active" id="panel-overview">
+      <div class="panel-grid">
+        <div class="card">
+          <h3>Population</h3>
+          <div class="stat-row"><span>Workers</span><span id="ov-workers">0 pop</span></div>
+          <div class="stat-row"><span>Idle</span><span id="ov-idle">0</span></div>
+          <div class="stat-row"><span>Army</span><span id="ov-army">0</span></div>
+        </div>
+        <div class="card">
+          <h3>Season Modifier</h3>
+          <div class="stat-row"><span>Temperature</span><span id="ov-temp">Average</span></div>
+          <div class="stat-row"><span>Food Modifier</span><span id="ov-food-mod">—</span></div>
+        </div>
+        <div class="card">
+          <h3>Net Production / tick</h3>
+          <div id="ov-net-production"></div>
+        </div>
+        <div class="card tower-card">
+          <h3>The Tower</h3>
+          <div class="stat-row"><span>Current Floor</span><span id="ov-floor">0 cleared</span></div>
+          <div class="stat-row"><span>Next Floor Strength</span><span id="ov-cult-strength">10</span></div>
+          <div class="stat-row"><span>Your Army Strength</span><span id="ov-army-strength">0</span></div>
+          <button class="btn-attack" id="btn-attack" disabled>⚔ Send Army to Tower</button>
+          <div id="attack-result" class="attack-result"></div>
+        </div>
+        <div class="card" id="event-log-card">
+          <h3>Event Log</h3>
+          <div id="event-log"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKERS -->
+    <section class="tab-panel" id="panel-workers">
+      <div class="workers-header">
+        <span>Workers: <strong id="w-assigned">0</strong> / <strong id="w-total">5</strong></span>
+        <span class="idle-note">Idle: <strong id="w-idle">5</strong></span>
+      </div>
+      <div id="worker-list" class="worker-list"></div>
+    </section>
+
+    <!-- WORKSHOP -->
+    <section class="tab-panel" id="panel-workshop">
+      <p class="panel-hint">Build structures to unlock new jobs and capabilities.</p>
+      <div id="structure-list" class="structure-list"></div>
+    </section>
+
+    <!-- ARMORY -->
+    <section class="tab-panel" id="panel-armory">
+      <p class="panel-hint">Enlist workers as soldiers. Requires equipment.</p>
+      <div id="army-list" class="army-list"></div>
+      <div class="card mt">
+        <h3>Army Summary</h3>
+        <div id="army-summary"></div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="tab-panel" id="panel-research">
+      <div class="stat-row mb"><span>Research Points</span><span id="res-pts">0</span></div>
+      <div class="stat-row mb"><span>Rate</span><span id="res-rate">0 / day</span></div>
+      <p class="panel-hint locked-hint" id="research-locked-msg">📜 Build a Library (unlocked by clearing Tower Floor 1) to conduct research.</p>
+      <div id="research-list" class="research-list"></div>
+    </section>
+
+    <!-- CASTLE -->
+    <section class="tab-panel" id="panel-castle">
+      <p class="panel-hint">Faction relations and events appear here as your kingdom grows.</p>
+      <div id="castle-events"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- LORE POPUP -->
+<div id="lore-popup" class="lore-popup hidden">
+  <div class="lore-inner">
+    <div class="lore-title">Scout's Report</div>
+    <div id="lore-text" class="lore-text"></div>
+    <button class="btn-lore-close" id="btn-lore-close">Understood</button>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
