@@ -60,29 +60,29 @@ const DATA = {
   // ── Worker types ──────────────────────────────────────────────────────────
   workers: [
     { id: 0, name: "Idle Worker",  workplace_struct_id: null, unlocked_by_struct: null,
-      food_per_tick: 2, produces: null,
+      food_per_tick: 1, produces: null,
       description: "Unassigned. No output." },
     { id: 1, name: "Gatherer",     workplace_struct_id: 0,    unlocked_by_struct: 0,
-      food_per_tick: 2, produces: { resource_id: 1, qty: 4 },
-      description: "Forages the open Field. +4 Food/tick" },
+      food_per_tick: 2, produces: { resource_id: 1, qty: 3},
+      description: "Forages the open Field. +3 Food/tick" },
     { id: 2, name: "Farmer",       workplace_struct_id: 1,    unlocked_by_struct: 1,
-      food_per_tick: 2, produces: { resource_id: 1, qty: 10 },
-      description: "Harvests a Farm. +10 Food/tick" },
+      food_per_tick: 2, produces: { resource_id: 1, qty: 5 },
+      description: "Harvests a Farm. +5 Food/tick" },
     { id: 3, name: "Lumberjack",   workplace_struct_id: 2,    unlocked_by_struct: 2,
-      food_per_tick: 3, produces: { resource_id: 2, qty: 5 },
-      description: "Cuts trees at a Woodcutter. +5 Wood/tick" },
+      food_per_tick: 3, produces: { resource_id: 2, qty: 2 },
+      description: "Cuts trees at a Woodcutter. +2 Wood/tick" },
     { id: 4, name: "Quarryman",        workplace_struct_id: 4,    unlocked_by_struct: 4,
-      food_per_tick: 4, produces: { resource_id: 3, qty: 3 },
-      description: "Mines stone at a Quarry. +3 Stone/tick" },
+      food_per_tick: 4, produces: { resource_id: 3, qty: 2 },
+      description: "Mines stone at a Quarry. +2 Stone/tick" },
     { id: 5, name: "Miner",        workplace_struct_id: 5,    unlocked_by_struct: 5,
-      food_per_tick: 4, produces: { resource_id: 4, qty: 2 },
-      description: "Mines ore at a Mine. +2 Ore/tick" },
+      food_per_tick: 4, produces: { resource_id: 4, qty: .5 },
+      description: "Mines ore at a Mine. +.5 Ore/tick" },
     { id: 6, name: "Smith",        workplace_struct_id: 7,    unlocked_by_struct: 7,
-      food_per_tick: 3, produces: { resource_id: 5, qty: 1 },
-      description: "Forges swords at the Armory. +1 Shoddy Sword/tick" },
+      food_per_tick: 3, produces: { resource_id: 5, qty: .25 },
+      description: "Forges swords at the Armory. +0.25 Shoddy Sword/tick" },
     { id: 7, name: "Scholar",      workplace_struct_id: 8,    unlocked_by_struct: 8,
-      food_per_tick: 2, produces: { resource_id: 7, qty: 1 },
-      description: "Studies in the Library. +1 Research/tick" }
+      food_per_tick: 2, produces: { resource_id: 7, qty: .1 },
+      description: "Studies in the Library. +0.1 Research/tick" }
   ],
 
   // ── Structures ────────────────────────────────────────────────────────────
@@ -97,7 +97,7 @@ const DATA = {
     {
       id: 1, name: "Farm", category: "Food",
       unlocked_by_struct: 0, unlocked_by_floor: null,
-      produces_res: 1, qty_per_tick: 10, max_workers: 2,
+      produces_res: 1, qty_per_tick: 5, max_workers: 2,
       cost: { Food: 25 }, starting: 0, max: null,
       desc: "A farm field. 2 Farmers max. +10 Food/tick each."
     },
