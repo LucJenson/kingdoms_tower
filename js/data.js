@@ -140,7 +140,7 @@ const DATA = {
     {
       id: 7, name: "Armory", category: "Military",
       unlocked_by_struct: 6, unlocked_by_floor: null,
-      produces_res: 5, qty_per_tick: 0.2, max_workers: null,
+      produces_res: 5, qty_per_tick: 0.2, max_workers: 1,
       cost: { Stone: 25, Wood: 15, Food: 50, Ore: 10 }, starting: 0, max: null,
       equipment_cap: 10,
       desc: "Stores up to 10 weapons. Smiths work here to forge Shoddy Swords at a rate of 0.2/tick each worker."
