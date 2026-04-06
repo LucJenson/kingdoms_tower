@@ -63,25 +63,25 @@ const DATA = {
       food_per_tick: 1, produces: null,
       description: "Unassigned. No output." },
     { id: 1, name: "Gatherer",     workplace_struct_id: 0,    unlocked_by_struct: 0,
-      food_per_tick: 2, produces: { resource_id: 1, qty: 3},
+      food_per_tick: 2, produces: { resource_id: 1, qty: 0},
       description: "Forages the open Field. +3 Food/tick" },
     { id: 2, name: "Farmer",       workplace_struct_id: 1,    unlocked_by_struct: 1,
-      food_per_tick: 2, produces: { resource_id: 1, qty: 5 },
+      food_per_tick: 2, produces: { resource_id: 1, qty: 0 },
       description: "Harvests a Farm. +5 Food/tick" },
     { id: 3, name: "Lumberjack",   workplace_struct_id: 2,    unlocked_by_struct: 2,
-      food_per_tick: 3, produces: { resource_id: 2, qty: 2 },
+      food_per_tick: 3, produces: { resource_id: 2, qty: 0 },
       description: "Cuts trees at a Woodcutter. +2 Wood/tick" },
     { id: 4, name: "Quarryman",        workplace_struct_id: 4,    unlocked_by_struct: 4,
-      food_per_tick: 4, produces: { resource_id: 3, qty: 2 },
+      food_per_tick: 4, produces: { resource_id: 3, qty: 0 },
       description: "Mines stone at a Quarry. +2 Stone/tick" },
     { id: 5, name: "Miner",        workplace_struct_id: 5,    unlocked_by_struct: 5,
-      food_per_tick: 4, produces: { resource_id: 4, qty: .5 },
-      description: "Mines ore at a Mine. +.5 Ore/tick" },
+      food_per_tick: 4, produces: { resource_id: 4, qty: 0 },
+      description: "Mines ore at a Mine." },
     { id: 6, name: "Smith",        workplace_struct_id: 7,    unlocked_by_struct: 7,
-      food_per_tick: 3, produces: { resource_id: 5, qty: .25 },
+      food_per_tick: 3, produces: { resource_id: 5, qty: 0 },
       description: "Forges swords at the Armory. +0.25 Shoddy Sword/tick" },
     { id: 7, name: "Scholar",      workplace_struct_id: 8,    unlocked_by_struct: 8,
-      food_per_tick: 2, produces: { resource_id: 7, qty: .1 },
+      food_per_tick: 2, produces: { resource_id: 7, qty: 0 },
       description: "Studies in the Library. +0.1 Research/tick" }
   ],
 
@@ -90,23 +90,23 @@ const DATA = {
     {
       id: 0, name: "Field", category: "Food",
       unlocked_by_struct: null, unlocked_by_floor: null,
-      produces_res: 1, qty_per_tick: 5, max_workers: Infinity,
+      produces_res: 1, qty_per_tick: 3, max_workers: Infinity,
       cost: {}, starting: 1, max: 1,
-      desc: "An open field of wild plants. Infinite Gatherers can forage here."
+      desc: "An open field of wild plants. Gatherers can forage here."
     },
     {
       id: 1, name: "Farm", category: "Food",
       unlocked_by_struct: 0, unlocked_by_floor: null,
       produces_res: 1, qty_per_tick: 5, max_workers: 2,
       cost: { Food: 25 }, starting: 0, max: null,
-      desc: "A farm field. 2 Farmers max. +10 Food/tick each."
+      desc: "A farm field. 2 Farmers max per farm. +5 Food/tick each worker."
     },
     {
       id: 2, name: "Woodcutter", category: "Lumber",
       unlocked_by_struct: 1, unlocked_by_floor: null,
-      produces_res: 2, qty_per_tick: 5, max_workers: 2,
+      produces_res: 2, qty_per_tick: 2, max_workers: 2,
       cost: { Food: 50 }, starting: 0, max: null,
-      desc: "A cabin by the woods. 2 Lumberjacks max. +5 Wood/tick each."
+      desc: "A cabin by the woods. 2 Lumberjacks max. +2 Wood/tick each worker."
     },
     {
       id: 3, name: "Cabin", category: "Housing",
@@ -119,38 +119,38 @@ const DATA = {
     {
       id: 4, name: "Quarry", category: "Mining",
       unlocked_by_struct: 3, unlocked_by_floor: null,
-      produces_res: 3, qty_per_tick: 3, max_workers: 2,
+      produces_res: 3, qty_per_tick: 1, max_workers: 2,
       cost: { Food: 25, Wood: 25 }, starting: 0, max: null,
-      desc: "A basic quarry. 2 Miners max. +3 Stone/tick each."
+      desc: "A basic quarry. 2 Miners max. +1 Stone/tick each worker."
     },
     {
       id: 5, name: "Mine", category: "Mining",
       unlocked_by_struct: 4, unlocked_by_floor: null,
-      produces_res: 4, qty_per_tick: 2, max_workers: 2,
+      produces_res: 4, qty_per_tick: 0.2, max_workers: 2,
       cost: { Food: 50, Wood: 25, Stone: 15 }, starting: 0, max: null,
-      desc: "A basic mine. 2 Miners max. +2 Ore/tick each."
+      desc: "A basic mine. 2 Miners max. +0.2 Ore/tick each worker."
     },
     {
       id: 6, name: "Barracks", category: "Military",
       unlocked_by_struct: 5, unlocked_by_floor: null,
-      produces_res: 6, qty_per_tick: null, max_workers: 5,
+      produces_res: 6, qty_per_tick: null, max_recruits: 5,
       cost: { Ore: 5 }, starting: 0, max: null,
       desc: "Train up to 5 Recruits per Barracks. Each requires 1 Shoddy Sword."
     },
     {
       id: 7, name: "Armory", category: "Military",
       unlocked_by_struct: 6, unlocked_by_floor: null,
-      produces_res: 5, qty_per_tick: null, max_workers: null,
+      produces_res: 5, qty_per_tick: 0.2, max_workers: null,
       cost: { Stone: 25, Wood: 15, Food: 50, Ore: 10 }, starting: 0, max: null,
       equipment_cap: 10,
-      desc: "Stores up to 10 weapons. Smiths work here to forge Shoddy Swords."
+      desc: "Stores up to 10 weapons. Smiths work here to forge Shoddy Swords at a rate of 0.2/tick each worker."
     },
     {
       id: 8, name: "Library", category: "Research",
       unlocked_by_struct: null, unlocked_by_floor: 0,
-      produces_res: 7, qty_per_tick: 1, max_workers: 3,
+      produces_res: 7, qty_per_tick: .1, max_workers: 3,
       cost: { Wood: 50, Food: 100, Stone: 50, Ore: 25 }, starting: 0, max: null,
-      desc: "Scholars study here. +1 Research/tick per Scholar."
+      desc: "Scholars study here. +.1 Research/tick per Scholar."
     }
   ],
 
